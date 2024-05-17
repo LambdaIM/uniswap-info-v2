@@ -7,7 +7,7 @@ import { Box, Flex, Text } from 'rebass'
 import styled from 'styled-components'
 
 import { CustomLink } from '../Link'
-import { Divider } from '../../components'
+import { Divider } from '../index'
 import { withRouter } from 'react-router-dom'
 import { formattedNum, formattedPercent } from '../../utils'
 import DoubleTokenLogo from '../DoubleLogo'
@@ -236,7 +236,9 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10, useTracked = fals
     pairs &&
     Object.keys(pairs)
       .filter(
-        (address) => !PAIR_BLACKLIST.includes(address) && (useTracked ? !!pairs[address].trackedReserveUSD : true)
+        (address) =>
+          !PAIR_BLACKLIST.includes(address) &&
+          (useTracked ? pairs[address] && !!pairs[address].trackedReserveUSD : true)
       )
       .sort((addressA, addressB) => {
         const pairA = pairs[addressA]
