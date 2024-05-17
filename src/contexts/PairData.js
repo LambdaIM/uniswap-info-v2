@@ -184,7 +184,8 @@ export default function Provider({ children }) {
 
 async function getBulkPairData(pairList, ethPrice) {
   const [t1, t2, tWeek] = getTimestampsForChanges()
-  let [{ number: b1 }, { number: b2 }, { number: bWeek }] = await getBlocksFromTimestamps([t1, t2, tWeek])
+  const blocks = await getBlocksFromTimestamps([t1, t2, tWeek])
+  const [{ number: b1 }, { number: b2 }, { number: bWeek }] = 0 !== blocks.length ? blocks : [0, 0, 0]
 
   try {
     let current = await client.query({
@@ -477,7 +478,7 @@ const getHourlyRateData = async (pairAddress, startTime, latestBlock) => {
 }
 
 export function Updater() {
-  const [, { updateTopPairs }] = usePairDataContext()
+  const [updateTopPairs] = usePairDataContext()
   const [ethPrice] = useEthPrice()
   useEffect(() => {
     async function getData() {
