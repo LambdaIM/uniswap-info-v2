@@ -64,6 +64,7 @@ export const TRACKED_OVERRIDES_PAIRS = [
   // '0xe1573b9d29e2183b1af0e743dc2754979a40d237',
   // '0x45804880de22913dafe09f4980848ece6ecbaf78',
   // '0x709f7b10f22eb62b05913b59b92ddd372d4e2152',
+  '0x6bc08e641e6a7899e0cddbdb23cf3b8b2596146a',
 ]
 
 // tokens that should be tracked but arent due to lag in subgraph

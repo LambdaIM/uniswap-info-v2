@@ -478,7 +478,7 @@ const getHourlyRateData = async (pairAddress, startTime, latestBlock) => {
 }
 
 export function Updater() {
-  const [updateTopPairs] = usePairDataContext()
+  const [, { updateTopPairs }] = usePairDataContext()
   const [ethPrice] = useEthPrice()
   useEffect(() => {
     async function getData() {
@@ -513,7 +513,7 @@ export function useHourlyRateData(pairAddress, timeWindow) {
     const currentTime = dayjs.utc()
     const windowSize = timeWindow === timeframeOptions.MONTH ? 'month' : 'week'
     const startTime =
-      timeWindow === timeframeOptions.ALL_TIME ? 1589760000 : currentTime.subtract(1, windowSize).startOf('hour').unix()
+      timeWindow === timeframeOptions.ALL_TIME ? 1713345623 : currentTime.subtract(1, windowSize).startOf('hour').unix()
 
     async function fetch() {
       let data = await getHourlyRateData(pairAddress, startTime, latestBlock)
